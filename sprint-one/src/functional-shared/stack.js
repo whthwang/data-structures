@@ -24,10 +24,12 @@ var stackMethods = {
   },
 
   pop: function() {
+    if (this.stackNums > 0) {
       var poppedOff = this.storage[this.stackNums];
       delete this.storage[this.stackNums];
       this.stackNums--;
       return poppedOff;
+    }
   },
 
   size: function() {
