@@ -4,7 +4,7 @@ class Queue {
   constructor(enQNums, deQNums, storage) {
     this.enQNums = 0;
     this.deQNums = 0;
-    this.storage = {};
+    this.storage = new Object;
   }
 
   enqueue(value) {
