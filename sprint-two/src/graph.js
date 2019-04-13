@@ -1,19 +1,42 @@
 
 
 // Instantiate a new graph
-var Graph = function() {
+var Graph = function() { //3, 5
+    //var this = Object.create(Graph)  when using new keyword
+    this.otherNodes = {};
+    //return this
 };
 
-// Add a node to the graph, passing in the node's value.
-Graph.prototype.addNode = function(node) {
+//An .addNode() method that takes a new node and adds it to the graph
+Graph.prototype.addNode = function(nodeValue) {
+    var newNode = {};  //addNode(2) will exist in my graph
+    newNode.value = nodeValue;
+    newNode.edges = {};
+    this.otherNodes[nodeValue] = newNode;
 };
+
+
+// Graph {
+//     _proto_: {
+//         addNode: function(node) {
+                // var newNode = Graph(node)
+            
+//         }
+//     }
+// }
 
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
-Graph.prototype.contains = function(node) {
+Graph.prototype.contains = function(nodeValue) {
+    if (this.otherNodes[nodeValue]) {
+        return true;
+    } else {
+        return false;
+    }
 };
 
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
+    
 };
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
@@ -37,3 +60,12 @@ Graph.prototype.forEachNode = function(cb) {
  */
 
 
+/*
+Graph {
+    _proto_: {
+        forEachNode: function(cb) {
+
+        }
+    }
+}
+*/
