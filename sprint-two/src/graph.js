@@ -39,6 +39,7 @@ Graph.prototype.removeNode = function(nodeValue) {
     for (var key in this.otherNodes[nodeValue]['edges']) {
         if (this.otherNodes[nodeValue]['edges'][key]) {
             this.otherNodes[nodeValue]['edges'][key] = false;
+            this.otherNodes[key]['edges'][nodeValue] = false;
         }
     }
     delete this.otherNodes[nodeValue];
@@ -46,6 +47,9 @@ Graph.prototype.removeNode = function(nodeValue) {
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
 Graph.prototype.hasEdge = function(fromNode, toNode) {
+    if (!this.otherNodes[fromNode] || !this.otherNodes[toNode]) {
+        return false;
+    }
     if (this.otherNodes[fromNode]['edges'][toNode] === true) {
         return true;
     } else if (this.otherNodes[toNode]['edges'][fromNode] === true) {
@@ -70,6 +74,9 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
 
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb) {  //cb is the callback function and should apply to every item
+  for (var key in this.otherNodes) {
+      cb(key);  //cb in this case is connectToFive
+  }
 };
 
 /*
