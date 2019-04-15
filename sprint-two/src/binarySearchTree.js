@@ -1,5 +1,5 @@
 var BinarySearchTree = function(value) { //use the prototypal method
-  var newTree = Object.create(BinarySearchTree.prototype);
+  var newTree = Object.create(BinarySearchTree);
   newTree.value = value;
   newTree.left = null;
   newTree.right = null;
@@ -7,7 +7,7 @@ var BinarySearchTree = function(value) { //use the prototypal method
   return newTree;
 };
 
-BinarySearchTree.prototype.insert = function(value){
+BinarySearchTree.insert = function(value){
   //create a new tree
       //is value greater than the top tree?
   var tree = BinarySearchTree(value);
@@ -29,7 +29,7 @@ BinarySearchTree.prototype.insert = function(value){
        traverse(this);
     }
 
-BinarySearchTree.prototype.contains = function(target) {
+BinarySearchTree.contains = function(target) {
   if (target === this.value) {
     return true;
   } else if (target > this.value) {
@@ -47,7 +47,7 @@ BinarySearchTree.prototype.contains = function(target) {
   }
 }
 
-BinarySearchTree.prototype.depthFirstLog = function(cb) {
+BinarySearchTree.depthFirstLog = function(cb) {
   cb(this.value);
   if (this.left !== null) {
      return this.left.depthFirstLog(cb);
